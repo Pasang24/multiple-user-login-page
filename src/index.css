@@ -17,3 +17,8 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
