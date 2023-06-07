@@ -1,0 +1,19 @@
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 85%;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #a32cc4;
+}

@@ -1,0 +1,13 @@
+h2,
+.desc {
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 25px;
+}
+
+.desc {
+  width: 80%;
+  margin-bottom: 40px;
+}
