@@ -1,4 +1,5 @@
-import { useReducer } from "react";
+import { useState, useReducer } from "react";
+import { createPortal } from "react-dom";
 import {
   AiOutlineUser,
   AiOutlineMail,
@@ -12,6 +13,7 @@ import Input from "../components/Input";
 import UserSelectSection from "../components/UserSelectSection";
 import LinkSection from "../components/LinkSection";
 import axios from "axios";
+import Spinner from "../components/Spinner";
 
 //defining action types for reducer function
 const UPDATE_USER = "updateUser";
@@ -44,6 +46,8 @@ const reducer = (state, action) => {
 };
 
 function NewAccountPage() {
+  const [showSpinner, setShowSpinner] = useState(false);
+
   const [state, dispatch] = useReducer(reducer, {
     role: "applicant",
     name: "",
@@ -57,7 +61,7 @@ function NewAccountPage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(state);
-
+    setShowSpinner(true);
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/signup`, state)
       .then((res) => {
@@ -67,11 +71,16 @@ function NewAccountPage() {
         if (err.response.status === 400) {
           console.log({ err });
         }
+      })
+      .finally(() => {
+        setShowSpinner(false);
       });
   };
 
   return (
     <Form onSubmit={handleSubmit}>
+      {showSpinner &&
+        createPortal(<Spinner />, document.getElementById("spinner-div"))}
       <UserSelectSection
         heading="Choose Account Type You Want To Create"
         desc={`Hello ${state.role}! Please fill out the form below to get started`}

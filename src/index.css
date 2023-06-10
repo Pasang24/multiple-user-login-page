@@ -19,6 +19,7 @@ body::-webkit-scrollbar {
 }
 
 a,
-button {
+button,
+div {
   -webkit-tap-highlight-color: transparent;
 }

@@ -1,0 +1,29 @@
+.menu-bar {
+  position: absolute;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 1px 1px 10px black;
+  /* padding: 0 10px; */
+  top: 100%;
+  right: 50%;
+  width: 150px;
+}
+
+.menu-bar div {
+  border-bottom: 1px solid purple;
+  padding: 10px 20px;
+}
+
+.menu-bar div:last-child {
+  border-bottom: none;
+}
+
+.menu-bar span {
+  color: purple;
+}
+
+@media (hover: hover) {
+  .menu-bar div:hover {
+    background: rgb(219, 209, 209);
+  }
+}

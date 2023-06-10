@@ -5,6 +5,7 @@
   align-items: center;
   width: 100%;
   padding: 16px;
+  user-select: none;
 }
 
 .nav-links a {
@@ -16,4 +17,18 @@
 
 .nav-buttons {
   display: flex;
+  align-items: center;
+}
+
+.user-profile {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background-color: white;
+  border: 1px solid purple;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  margin-left: 10px;
+  cursor: pointer;
 }

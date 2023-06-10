@@ -1,9 +1,12 @@
-import { useReducer } from "react";
+import { useState, useReducer } from "react";
+import { createPortal } from "react-dom";
+import { useNavigate } from "react-router-dom";
 import { AiOutlineMail, AiFillLock } from "react-icons/ai";
 import Form from "../components/Form";
 import UserSelectSection from "../components/UserSelectSection";
 import Input from "../components/Input";
 import LinkSection from "../components/LinkSection";
+import Spinner from "../components/Spinner";
 import axios from "axios";
 
 //defining action types for reducer function
@@ -24,7 +27,11 @@ const reducer = (state, action) => {
   }
 };
 
-function LoginPage() {
+function LoginPage({ setHasLoggedIn }) {
+  const navigate = useNavigate();
+
+  const [showSpinner, setShowSpinner] = useState(false);
+
   const [state, dispatch] = useReducer(reducer, {
     role: "applicant",
     email: "",
@@ -33,22 +40,32 @@ function LoginPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setShowSpinner(true);
     console.log(state);
-
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/login`, state)
       .then((res) => {
+        //storing loginState and userToken in localStorage for persisting user login
+        localStorage.setItem("hasLoggedIn", JSON.stringify(true));
+        localStorage.setItem("userToken", JSON.stringify(res.data));
         console.log(res.data);
+        setHasLoggedIn(true);
+        navigate("/");
       })
       .catch((err) => {
         if (err.response.status === 400 || err.response.status === 401) {
           console.log(err);
         }
+      })
+      .finally(() => {
+        setShowSpinner(false);
       });
   };
 
   return (
     <Form onSubmit={handleSubmit}>
+      {showSpinner &&
+        createPortal(<Spinner />, document.getElementById("spinner-div"))}
       <UserSelectSection
         heading="Choose Account Type"
         user={state.role}
