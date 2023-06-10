@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import "./MenuBar.css";
 
 function MenuBar({ setShowMenu }) {
@@ -20,7 +21,12 @@ function MenuBar({ setShowMenu }) {
   }, [setShowMenu]);
 
   return (
-    <div className="menu-bar">
+    <motion.div
+      initial={{ scale: 0, transformOrigin: "top right" }}
+      animate={{ scale: 1 }}
+      exit={{ scale: 0 }}
+      className="menu-bar"
+    >
       <div onClick={() => navigate("/profile")}>
         <span>My Profile</span>
       </div>
@@ -30,7 +36,7 @@ function MenuBar({ setShowMenu }) {
       <div onClick={() => navigate("/appliedjobs")}>
         <span>Applied Jobs</span>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

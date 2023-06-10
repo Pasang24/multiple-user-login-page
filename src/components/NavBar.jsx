@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import { FaUser } from "react-icons/fa";
 import MenuBar from "./MenuBar";
 import Button from "./Buttton";
@@ -36,7 +37,9 @@ function NavBar({ hasLoggedIn, setHasLoggedIn }) {
             className="user-profile"
           >
             <FaUser size={23} color="purple" />
-            {showMenu && <MenuBar setShowMenu={setShowMenu} />}
+            <AnimatePresence>
+              {showMenu && <MenuBar setShowMenu={setShowMenu} />}
+            </AnimatePresence>
           </div>
         </div>
       )}
