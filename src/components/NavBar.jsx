@@ -36,7 +36,7 @@ function NavBar({ hasLoggedIn, setHasLoggedIn }) {
             onClick={() => setShowMenu((prev) => !prev)}
             className="user-profile"
           >
-            <FaUser size={23} color="purple" />
+            <FaUser size={26} color="purple" />
             <AnimatePresence>
               {showMenu && <MenuBar setShowMenu={setShowMenu} />}
             </AnimatePresence>
