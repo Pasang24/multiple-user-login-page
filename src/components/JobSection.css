@@ -1,0 +1,18 @@
+.jobsection-container {
+  padding: 0 20px;
+}
+
+.joblist-title {
+  color: white;
+  text-align: left;
+}
+
+.jobsection {
+  display: flex;
+}
+
+@media screen and (max-width: 726px) {
+  .jobsection {
+    flex-direction: column;
+  }
+}

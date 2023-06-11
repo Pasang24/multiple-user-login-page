@@ -1,0 +1,20 @@
+.job-container {
+  background: white;
+  margin: 6px;
+  padding: 20px;
+  border-radius: 10px;
+  width: calc(100% / 3.2);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1034px) {
+  .job-container {
+    width: calc(100% / 2.2);
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .job-container {
+    width: 100%;
+  }
+}

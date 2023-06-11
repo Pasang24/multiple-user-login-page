@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import SearchBar from "../components/SearchBar";
-import JobList from "../components/JobList";
+import JobSection from "../components/JobSection";
+import sampleJobs from "../sampleData";
 
 function HomePage() {
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState(sampleJobs);
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/jobs")
@@ -19,7 +20,7 @@ function HomePage() {
 
   const searchJobs = (searchTerm) => {
     axios
-      .get(`http://localhost:8000/api/jobs/${searchTerm}`)
+      .get(`http://localhost:8000/api/jobs/?vacancy=${searchTerm}`)
       .then((res) => {
         console.log(res.data);
         setJobs(res.data);
@@ -32,7 +33,7 @@ function HomePage() {
   return (
     <div>
       <SearchBar searchJobs={searchJobs} />
-      <JobList jobs={jobs} />
+      <JobSection jobs={jobs} />
     </div>
   );
 }

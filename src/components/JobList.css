@@ -1,8 +1,6 @@
-.joblist-container {
-  padding: 0 20px;
-}
-
-.joblist-container h2 {
-  color: white;
-  text-align: left;
+.jobs {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: flex-start;
 }
