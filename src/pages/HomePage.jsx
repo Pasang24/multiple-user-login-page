@@ -6,6 +6,7 @@ import sampleJobs from "../sampleData";
 
 function HomePage() {
   const [jobs, setJobs] = useState(sampleJobs);
+  const [showSkeleton, setShowSkeleton] = useState(true);
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/jobs")
@@ -15,10 +16,14 @@ function HomePage() {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setShowSkeleton(false);
       });
   }, []);
 
   const searchJobs = (searchTerm) => {
+    setShowSkeleton(true);
     axios
       .get(`http://localhost:8000/api/jobs/?vacancy=${searchTerm}`)
       .then((res) => {
@@ -27,13 +32,16 @@ function HomePage() {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setShowSkeleton(false);
       });
   };
 
   return (
     <div>
       <SearchBar searchJobs={searchJobs} />
-      <JobSection jobs={jobs} />
+      <JobSection jobs={jobs} showSkeleton={showSkeleton} />
     </div>
   );
 }
