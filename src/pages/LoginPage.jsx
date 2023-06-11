@@ -5,6 +5,7 @@ import { AiOutlineMail, AiFillLock } from "react-icons/ai";
 import Form from "../components/Form";
 import UserSelectSection from "../components/UserSelectSection";
 import Input from "../components/Input";
+import PasswordInput from "../components/PasswordInput";
 import LinkSection from "../components/LinkSection";
 import Spinner from "../components/Spinner";
 import axios from "axios";
@@ -41,13 +42,12 @@ function LoginPage({ setHasLoggedIn }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     setShowSpinner(true);
-    console.log(state);
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/login`, state)
       .then((res) => {
         //storing loginState and userToken in localStorage for persisting user login
         localStorage.setItem("hasLoggedIn", JSON.stringify(true));
-        localStorage.setItem("userToken", JSON.stringify(res.data));
+        localStorage.setItem("userToken", JSON.stringify(res.data.token));
         console.log(res.data);
         setHasLoggedIn(true);
         navigate("/");
@@ -81,15 +81,14 @@ function LoginPage({ setHasLoggedIn }) {
       >
         <AiOutlineMail color="rgba(0, 0, 0, 0.75)" />
       </Input>
-      <Input
-        type="password"
+      <PasswordInput
         value={state.password}
         actionType={UPDATE_PASSWORD}
         setValue={dispatch}
         placeholder="Password"
       >
         <AiFillLock color="rgba(0, 0, 0, 0.75)" />
-      </Input>
+      </PasswordInput>
       <LinkSection
         buttonText="Login"
         desc="No account?"

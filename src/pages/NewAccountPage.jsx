@@ -10,6 +10,7 @@ import {
 } from "react-icons/ai";
 import Form from "../components/Form";
 import Input from "../components/Input";
+import PasswordInput from "../components/PasswordInput";
 import UserSelectSection from "../components/UserSelectSection";
 import LinkSection from "../components/LinkSection";
 import axios from "axios";
@@ -60,7 +61,6 @@ function NewAccountPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(state);
     setShowSpinner(true);
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/signup`, state)
@@ -105,15 +105,14 @@ function NewAccountPage() {
       >
         <AiOutlineMail color="rgba(0, 0, 0, 0.75)" />
       </Input>
-      <Input
-        type="password"
+      <PasswordInput
         value={state.password}
         actionType={UPDATE_PASSWORD}
         setValue={dispatch}
         placeholder="Password"
       >
         <AiFillLock color="rgba(0, 0, 0, 0.75)" />
-      </Input>
+      </PasswordInput>
       <Input
         type="number"
         value={state.phoneNumber || ""}
