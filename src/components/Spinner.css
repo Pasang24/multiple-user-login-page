@@ -4,7 +4,7 @@
 
 .spinner-container {
   position: fixed;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.2);
   inset: 0;
   display: flex;
   justify-content: center;
@@ -17,7 +17,7 @@
   display: grid;
   border: 4.5px solid #0000;
   border-radius: 50%;
-  border-color: #dbdcef #0000;
+  border-color: #3d3d3f #0000;
   animation: spinner-e04l1k 1s infinite linear;
 }
 

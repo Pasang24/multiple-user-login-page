@@ -1,0 +1,30 @@
+.jobfilter-container {
+  background: white;
+  justify-content: center;
+  align-self: flex-start;
+  width: 30%;
+  padding: 18px;
+  margin-top: 6px;
+  border-radius: 10px;
+}
+
+.jobfilter {
+  margin-bottom: 10px;
+}
+
+.jobfilter ul {
+  list-style: none;
+}
+
+@media screen and (max-width: 740px) {
+  .jobfilter-container {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  /* .jobcategory-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  } */
+}

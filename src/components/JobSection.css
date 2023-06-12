@@ -11,8 +11,16 @@
   display: flex;
 }
 
-@media screen and (max-width: 726px) {
+@media screen and (max-width: 740px) {
   .jobsection {
     flex-direction: column;
+  }
+
+  .jobsection-container {
+    padding: 0;
+  }
+
+  .joblist-title {
+    padding: 0 20px;
   }
 }

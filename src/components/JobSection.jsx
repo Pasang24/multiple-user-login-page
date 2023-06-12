@@ -1,4 +1,4 @@
-import JobCategory from "./JobCategory";
+import JobFilter from "./JobFilter";
 import JobList from "./JobList";
 import SkeletonContainer from "./SkeletonContainer";
 import "./JobSection.css";
@@ -13,7 +13,7 @@ function JobSection({ jobs, showSkeleton }) {
         ) : (
           <JobList jobs={jobs} />
         )}
-        <JobCategory />
+        <JobFilter />
       </div>
     </div>
   );
