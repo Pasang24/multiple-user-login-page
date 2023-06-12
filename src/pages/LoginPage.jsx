@@ -63,39 +63,41 @@ function LoginPage({ setHasLoggedIn }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <>
+      <Form onSubmit={handleSubmit}>
+        <UserSelectSection
+          heading="Choose Account Type"
+          user={state.role}
+          setUser={dispatch}
+          desc={`Hello ${state.role}! Please login to get started`}
+        />
+        <Input
+          type="text"
+          value={state.email}
+          actionType={UPDATE_EMAIL}
+          setValue={dispatch}
+          placeholder="Email"
+        >
+          <AiOutlineMail color="rgba(0, 0, 0, 0.75)" />
+        </Input>
+        <PasswordInput
+          value={state.password}
+          actionType={UPDATE_PASSWORD}
+          setValue={dispatch}
+          placeholder="Password"
+        >
+          <AiFillLock color="rgba(0, 0, 0, 0.75)" />
+        </PasswordInput>
+        <LinkSection
+          buttonText="Login"
+          desc="No account?"
+          linkText="Create new account"
+          to="/signup"
+        />
+      </Form>
       {showSpinner &&
         createPortal(<Spinner />, document.getElementById("spinner-div"))}
-      <UserSelectSection
-        heading="Choose Account Type"
-        user={state.role}
-        setUser={dispatch}
-        desc={`Hello ${state.role}! Please login to get started`}
-      />
-      <Input
-        type="text"
-        value={state.email}
-        actionType={UPDATE_EMAIL}
-        setValue={dispatch}
-        placeholder="Email"
-      >
-        <AiOutlineMail color="rgba(0, 0, 0, 0.75)" />
-      </Input>
-      <PasswordInput
-        value={state.password}
-        actionType={UPDATE_PASSWORD}
-        setValue={dispatch}
-        placeholder="Password"
-      >
-        <AiFillLock color="rgba(0, 0, 0, 0.75)" />
-      </PasswordInput>
-      <LinkSection
-        buttonText="Login"
-        desc="No account?"
-        linkText="Create new account"
-        to="/signup"
-      />
-    </Form>
+    </>
   );
 }
 

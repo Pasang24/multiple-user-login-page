@@ -78,79 +78,81 @@ function NewAccountPage() {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <>
+      <Form onSubmit={handleSubmit}>
+        <UserSelectSection
+          heading="Choose Account Type You Want To Create"
+          desc={`Hello ${state.role}! Please fill out the form below to get started`}
+          user={state.role}
+          setUser={dispatch}
+        />
+        <Input
+          type="text"
+          value={state.name}
+          setValue={dispatch}
+          actionType={UPDATE_NAME}
+          placeholder="Full Name"
+        >
+          <AiOutlineUser color="rgba(0, 0, 0, 0.75)" />
+        </Input>
+        <Input
+          type="text"
+          value={state.email}
+          setValue={dispatch}
+          actionType={UPDATE_EMAIL}
+          placeholder="Email"
+        >
+          <AiOutlineMail color="rgba(0, 0, 0, 0.75)" />
+        </Input>
+        <PasswordInput
+          value={state.password}
+          actionType={UPDATE_PASSWORD}
+          setValue={dispatch}
+          placeholder="Password"
+        >
+          <AiFillLock color="rgba(0, 0, 0, 0.75)" />
+        </PasswordInput>
+        <Input
+          type="number"
+          value={state.phoneNumber || ""}
+          actionType={UPDATE_NUMBER}
+          setValue={dispatch}
+          placeholder="Phone Number"
+        >
+          <AiOutlinePhone color="rgba(0, 0, 0, 0.75)" />
+        </Input>
+        {state.role === "applicant" && (
+          <Input
+            type="text"
+            value={state.education}
+            actionType={UPDATE_EDUCATION}
+            setValue={dispatch}
+            placeholder="Education"
+          >
+            <AiFillBook color="rgba(0, 0, 0, 0.75)" />
+          </Input>
+        )}
+        {state.role === "recruiter" && (
+          <Input
+            type="text"
+            value={state.company}
+            setValue={dispatch}
+            actionType={UPDATE_COMPANY}
+            placeholder="Company Name"
+          >
+            <AiOutlineShop color="rgba(0, 0, 0, 0.75)" />
+          </Input>
+        )}
+        <LinkSection
+          buttonText="Create Account"
+          desc="Already have an account?"
+          linkText="Login"
+          to="/login"
+        />
+      </Form>
       {showSpinner &&
         createPortal(<Spinner />, document.getElementById("spinner-div"))}
-      <UserSelectSection
-        heading="Choose Account Type You Want To Create"
-        desc={`Hello ${state.role}! Please fill out the form below to get started`}
-        user={state.role}
-        setUser={dispatch}
-      />
-      <Input
-        type="text"
-        value={state.name}
-        setValue={dispatch}
-        actionType={UPDATE_NAME}
-        placeholder="Full Name"
-      >
-        <AiOutlineUser color="rgba(0, 0, 0, 0.75)" />
-      </Input>
-      <Input
-        type="text"
-        value={state.email}
-        setValue={dispatch}
-        actionType={UPDATE_EMAIL}
-        placeholder="Email"
-      >
-        <AiOutlineMail color="rgba(0, 0, 0, 0.75)" />
-      </Input>
-      <PasswordInput
-        value={state.password}
-        actionType={UPDATE_PASSWORD}
-        setValue={dispatch}
-        placeholder="Password"
-      >
-        <AiFillLock color="rgba(0, 0, 0, 0.75)" />
-      </PasswordInput>
-      <Input
-        type="number"
-        value={state.phoneNumber || ""}
-        actionType={UPDATE_NUMBER}
-        setValue={dispatch}
-        placeholder="Phone Number"
-      >
-        <AiOutlinePhone color="rgba(0, 0, 0, 0.75)" />
-      </Input>
-      {state.role === "applicant" && (
-        <Input
-          type="text"
-          value={state.education}
-          actionType={UPDATE_EDUCATION}
-          setValue={dispatch}
-          placeholder="Education"
-        >
-          <AiFillBook color="rgba(0, 0, 0, 0.75)" />
-        </Input>
-      )}
-      {state.role === "recruiter" && (
-        <Input
-          type="text"
-          value={state.company}
-          setValue={dispatch}
-          actionType={UPDATE_COMPANY}
-          placeholder="Company Name"
-        >
-          <AiOutlineShop color="rgba(0, 0, 0, 0.75)" />
-        </Input>
-      )}
-      <LinkSection
-        buttonText="Create Account"
-        desc="Already have an account?"
-        linkText="Login"
-        to="/login"
-      />
-    </Form>
+    </>
   );
 }
 

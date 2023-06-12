@@ -23,3 +23,8 @@ button,
 div {
   -webkit-tap-highlight-color: transparent;
 }
+
+#spinner-div,
+#joboverview-div {
+  position: relative;
+}

@@ -3,7 +3,8 @@ import "./SkeletonContainer.css";
 
 function SkeletonContainer({ times }) {
   let renderSkeleton = [];
-  for (let i = 0; i < times; i++) renderSkeleton[i] = <SkeletonLoader />;
+  for (let i = 0; i < times; i++)
+    renderSkeleton[i] = <SkeletonLoader key={i} />;
   return <div className="skeleton-container">{renderSkeleton}</div>;
 }
 
