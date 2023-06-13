@@ -12,7 +12,7 @@ function HomePage() {
       .get("http://localhost:8000/api/jobs?search_term")
       .then((res) => {
         console.log(res.data);
-        setJobs(res.data);
+        setJobs(res.data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -28,7 +28,7 @@ function HomePage() {
       .get(`http://localhost:8000/api/jobs/?vacancy=${searchTerm}`)
       .then((res) => {
         console.log(res.data);
-        setJobs(res.data);
+        setJobs(res.data.data);
       })
       .catch((err) => {
         console.log(err);
