@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import NewAccountPage from "./pages/NewAccountPage";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/custom_components/NavBar";
 
 function App() {
   const [hasLoggedIn, setHasLoggedIn] = useState(

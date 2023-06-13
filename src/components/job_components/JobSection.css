@@ -11,7 +11,7 @@
   display: flex;
 }
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 1034px) {
   .jobsection {
     flex-direction: column;
   }

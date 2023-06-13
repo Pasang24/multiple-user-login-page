@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import SearchBar from "../components/SearchBar";
-import JobSection from "../components/JobSection";
+import SearchBar from "../components/custom_components/SearchBar";
+import JobSection from "../components/job_components/JobSection";
 import sampleJobs from "../sampleData";
 
 function HomePage() {

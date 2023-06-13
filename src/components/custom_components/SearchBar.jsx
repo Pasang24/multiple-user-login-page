@@ -8,6 +8,7 @@ function SearchBar({ searchJobs }) {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (searchTerm.trim().length === 0) return;
     searchJobs(searchTerm);
     setSearchTerm("");
   };

@@ -16,7 +16,7 @@
   list-style: none;
 }
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 1034px) {
   .jobfilter-container {
     width: 100%;
     border-radius: 0;

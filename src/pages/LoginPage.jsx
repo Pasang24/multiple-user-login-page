@@ -2,12 +2,12 @@ import { useState, useReducer } from "react";
 import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineMail, AiFillLock } from "react-icons/ai";
-import Form from "../components/Form";
-import UserSelectSection from "../components/UserSelectSection";
-import Input from "../components/Input";
-import PasswordInput from "../components/PasswordInput";
-import LinkSection from "../components/LinkSection";
-import Spinner from "../components/Spinner";
+import Form from "../components/form_components/Form";
+import UserSelectSection from "../components/form_components/UserSelectSection";
+import Input from "../components/custom_components/Input";
+import PasswordInput from "../components/form_components/PasswordInput";
+import LinkSection from "../components/form_components/LinkSection";
+import Spinner from "../components/loader_components/Spinner";
 import axios from "axios";
 
 //defining action types for reducer function

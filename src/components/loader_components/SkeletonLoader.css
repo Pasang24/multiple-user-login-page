@@ -5,7 +5,6 @@
   border-radius: 10px;
   width: calc(100% / 3.2);
   height: 200px;
-  overflow: hidden;
 }
 
 .innerskeleton-div {
@@ -32,9 +31,9 @@
   }
 }
 
-@media screen and (max-width: 1034px) {
+@media screen and (max-width: 740px) {
   .skeleton-div {
-    width: calc(100% / 2.2);
+    width: calc(100% / 2.1);
   }
 }
 

@@ -8,12 +8,6 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 1034px) {
-  .job-container {
-    width: calc(100% / 2.2);
-  }
-}
-
 @media screen and (max-width: 740px) {
   .job-container {
     width: calc(100% / 2.1);
