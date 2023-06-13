@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { FaUser } from "react-icons/fa";
 import MenuBar from "./MenuBar";
-import Button from "./custom_components/Buttton";
+import Button from "./Buttton";
 import "./NavBar.css";
 
 function NavBar({ hasLoggedIn, setHasLoggedIn }) {

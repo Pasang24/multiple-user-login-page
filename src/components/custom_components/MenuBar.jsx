@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import "./custom_components/MenuBar.css";
+import "./MenuBar.css";
 
 function MenuBar({ setShowMenu }) {
   const navigate = useNavigate();

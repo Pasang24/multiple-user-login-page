@@ -4,7 +4,7 @@ import {
   MdOutlineKeyboardArrowLeft,
   MdOutlineKeyboardArrowRight,
 } from "react-icons/md";
-import "./custom_components/Pagination.css";
+import "./Pagination.css";
 
 function Pagination() {
   return (

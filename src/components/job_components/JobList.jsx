@@ -1,5 +1,5 @@
-import Job from "./job_components/Job";
-import Pagination from "./Pagination";
+import Job from "./Job";
+import Pagination from "../custom_components/Pagination";
 import "./JobList.css";
 
 function JobList({ jobs }) {

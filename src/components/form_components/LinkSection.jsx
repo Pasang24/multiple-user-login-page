@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./LinkSection.css";
-import Button from "./custom_components/Buttton";
+import Button from "../custom_components/Buttton";
 
 function LinkSection({ buttonText, desc, linkText, to }) {
   return (

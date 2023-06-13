@@ -1,6 +1,6 @@
-import JobFilter from "./job_components/JobFilter";
-import JobList from "./job_components/JobList";
-import SkeletonContainer from "./SkeletonContainer";
+import JobFilter from "./JobFilter";
+import JobList from "./JobList";
+import SkeletonContainer from "../loader_components/SkeletonContainer";
 import "./JobSection.css";
 
 function JobSection({ jobs, showSkeleton }) {

@@ -8,13 +8,13 @@ import {
   AiFillBook,
   AiOutlineShop,
 } from "react-icons/ai";
-import Form from "../components/Form";
-import Input from "../components/Input";
-import PasswordInput from "../components/PasswordInput";
-import UserSelectSection from "../components/UserSelectSection";
-import LinkSection from "../components/LinkSection";
+import Form from "../components/form_components/Form";
+import Input from "../components/custom_components/Input";
+import PasswordInput from "../components/form_components/PasswordInput";
+import UserSelectSection from "../components/form_components/UserSelectSection";
+import LinkSection from "../components/form_components/LinkSection";
 import axios from "axios";
-import Spinner from "../components/Spinner";
+import Spinner from "../components/loader_components/Spinner";
 
 //defining action types for reducer function
 const UPDATE_USER = "updateUser";
