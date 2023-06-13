@@ -9,7 +9,7 @@ function HomePage() {
   const [showSkeleton, setShowSkeleton] = useState(true);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/jobs")
+      .get("http://localhost:8000/api/jobs?search_term")
       .then((res) => {
         console.log(res.data);
         setJobs(res.data);
