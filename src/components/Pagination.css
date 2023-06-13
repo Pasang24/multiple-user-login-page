@@ -1,0 +1,35 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 10px auto 10px;
+  width: 100%;
+}
+
+.pagination ul {
+  display: flex;
+  background: white;
+  padding: 8px;
+  border-radius: 50px;
+}
+
+.pagination ul li {
+  color: #a32cc4;
+  list-style: none;
+  line-height: 48px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  margin: 0 3px;
+  transition: all 0.3s ease;
+}
+
+@media (hover: hover) {
+  .pagination ul li:hover {
+    background: #a32cc4;
+    color: white;
+  }
+}

@@ -9,7 +9,7 @@ function JobSection({ jobs, showSkeleton }) {
       <h2 className="joblist-title">Available Jobs</h2>
       <div className="jobsection">
         {showSkeleton ? (
-          <SkeletonContainer times={9} />
+          <SkeletonContainer times={12} />
         ) : (
           <JobList jobs={jobs} />
         )}

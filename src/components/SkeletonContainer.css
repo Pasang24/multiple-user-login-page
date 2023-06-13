@@ -4,3 +4,15 @@
   width: 100%;
   justify-content: flex-start;
 }
+
+@media screen and (max-width: 1034px) {
+  .skeleton-container {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .skeleton-container {
+    padding: 0 20px;
+  }
+}

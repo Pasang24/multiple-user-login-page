@@ -1,12 +1,23 @@
 .jobs {
   display: flex;
-  flex-wrap: wrap;
+  align-items: flex-start;
+  flex-direction: column;
   width: 100%;
-  justify-content: flex-start;
+}
+
+.jobs-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 1034px) {
+  .jobs-container {
+    justify-content: center;
+  }
 }
 
 @media screen and (max-width: 740px) {
-  .jobs {
+  .jobs-container {
     padding: 0 20px;
   }
 }
