@@ -1,4 +1,4 @@
-import Job from "./Job";
+import Job from "./job_components/Job";
 import Pagination from "./Pagination";
 import "./JobList.css";
 

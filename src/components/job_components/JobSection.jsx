@@ -1,5 +1,5 @@
-import JobFilter from "./JobFilter";
-import JobList from "./JobList";
+import JobFilter from "./job_components/JobFilter";
+import JobList from "./job_components/JobList";
 import SkeletonContainer from "./SkeletonContainer";
 import "./JobSection.css";
 

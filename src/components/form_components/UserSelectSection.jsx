@@ -1,4 +1,4 @@
-import UserList from "./UserList";
+import UserList from "./form_components/UserList";
 import "./UserSelectSection.css";
 
 function UserSelectSection({ heading, desc, user, setUser }) {

@@ -1,5 +1,5 @@
 import { BiUserCircle, BiBriefcaseAlt2 } from "react-icons/bi";
-import User from "./User";
+import User from "./form_components/User";
 import "./UserList.css";
 
 function UserList({ user, setUser }) {
