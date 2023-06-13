@@ -9,9 +9,19 @@ function Job({ job }) {
   return (
     <>
       <div className="job-container" onClick={() => setShowOverview(true)}>
-        <h3>{job.title}</h3>
-        <p>{job.description}</p>
-        <h1>Posted Date: {job.posted_date}</h1>
+        <div className="company-image">
+          {/* Added static image for now */}
+          <img
+            alt="logo"
+            src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU"
+          />
+        </div>
+        <div className="job-desc">
+          <h3>{job.title}</h3>
+          <p>Company: {job.company}</p>
+          <p>Location: {job.location}</p>
+          <p>Requirement: {job.requirements}</p>
+        </div>
       </div>
       {showOverview &&
         createPortal(
