@@ -9,7 +9,7 @@ function HomePage() {
   const [showSkeleton, setShowSkeleton] = useState(true);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/jobs?search_term")
+      .get(`${process.env.REACT_APP_SERVER_URL}/jobs?search_term`)
       .then((res) => {
         console.log(res.data);
         setJobs(res.data.data);
@@ -25,7 +25,7 @@ function HomePage() {
   const searchJobs = (searchTerm) => {
     setShowSkeleton(true);
     axios
-      .get(`http://localhost:8000/api/jobs/?vacancy=${searchTerm}`)
+      .get(`${process.env.REACT_APP_SERVER_URL}/jobs?search_term=${searchTerm}`)
       .then((res) => {
         console.log(res.data);
         setJobs(res.data.data);
