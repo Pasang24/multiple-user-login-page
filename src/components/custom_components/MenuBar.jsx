@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./MenuBar.css";
 
-function MenuBar({ setShowMenu }) {
+function MenuBar({ setShowMenu, setHasLoggedIn }) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,6 +20,13 @@ function MenuBar({ setShowMenu }) {
     return () => document.removeEventListener("click", handleClick);
   }, [setShowMenu]);
 
+  const handleLogout = () => {
+    setHasLoggedIn(false);
+    navigate("/");
+    localStorage.clear();
+    // code for logout
+  };
+
   return (
     <motion.div
       initial={{ scale: 0, transformOrigin: "top right" }}
@@ -35,6 +42,9 @@ function MenuBar({ setShowMenu }) {
       </div>
       <div onClick={() => navigate("/appliedjobs")}>
         <span>Applied Jobs</span>
+      </div>
+      <div onClick={handleLogout}>
+        <span>Log Out</span>
       </div>
     </motion.div>
   );
