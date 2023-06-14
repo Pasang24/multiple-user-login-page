@@ -36,19 +36,21 @@ function HomePage() {
       nextPageNum > totalPages
     )
       return;
-    // setShowSkeleton(true);
-    // axios
-    //   .get(`${process.env.REACT_APP_SERVER_URL}/jobs?search_term`)
-    //   .then((res) => {
-    //     console.log(res.data);
-    //     setJobs(res.data.data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   })
-    //   .finally(() => {
-    //     setShowSkeleton(false);
-    //   });
+    setShowSkeleton(true);
+    axios
+      .get(
+        `${process.env.REACT_APP_SERVER_URL}/jobs?search_term&page=${nextPageNum}`
+      )
+      .then((res) => {
+        console.log(res.data);
+        setJobs(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setShowSkeleton(false);
+      });
     setCurrentPage(nextPageNum);
   };
 

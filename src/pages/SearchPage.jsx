@@ -17,7 +17,9 @@ function SearchPage() {
   useEffect(() => {
     setShowSkeleton(true);
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/jobs?search_term=${searchTerm}`)
+      .get(
+        `${process.env.REACT_APP_SERVER_URL}/jobs?search_term=${searchTerm}&page=${currentPage}`
+      )
       .then((res) => {
         console.log(res.data);
         setJobs(res.data.data);
@@ -29,7 +31,7 @@ function SearchPage() {
       .finally(() => {
         setShowSkeleton(false);
       });
-  }, [searchTerm]);
+  }, [searchTerm, currentPage]);
 
   const handlePageChange = (nextPageNum) => {
     if (
@@ -38,19 +40,21 @@ function SearchPage() {
       nextPageNum > totalPages
     )
       return;
-    // setShowSkeleton(true);
-    // axios
-    //   .get(`${process.env.REACT_APP_SERVER_URL}/jobs?search_term`)
-    //   .then((res) => {
-    //     console.log(res.data);
-    //     setJobs(res.data.data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   })
-    //   .finally(() => {
-    //     setShowSkeleton(false);
-    //   });
+    setShowSkeleton(true);
+    axios
+      .get(
+        `${process.env.REACT_APP_SERVER_URL}/jobs?search_term=${searchTerm}&page=${nextPageNum}`
+      )
+      .then((res) => {
+        console.log(res.data);
+        setJobs(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setShowSkeleton(false);
+      });
     setCurrentPage(nextPageNum);
   };
 
