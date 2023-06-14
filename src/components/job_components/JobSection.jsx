@@ -3,7 +3,13 @@ import JobList from "./JobList";
 import SkeletonContainer from "../loader_components/SkeletonContainer";
 import "./JobSection.css";
 
-function JobSection({ jobs, showSkeleton, pageNum, handlePageChange }) {
+function JobSection({
+  jobs,
+  showSkeleton,
+  currentPage,
+  totalPages,
+  handlePageChange,
+}) {
   return (
     <div className="jobsection-container">
       <h2 className="joblist-title">Available Jobs</h2>
@@ -13,7 +19,8 @@ function JobSection({ jobs, showSkeleton, pageNum, handlePageChange }) {
         ) : (
           <JobList
             jobs={jobs}
-            pageNum={pageNum}
+            currentPage={currentPage}
+            totalPages={totalPages}
             handlePageChange={handlePageChange}
           />
         )}

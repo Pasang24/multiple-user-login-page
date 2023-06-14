@@ -6,42 +6,42 @@ import {
 } from "react-icons/md";
 import "./Pagination.css";
 
-function Pagination({ pageNum, handlePageChange }) {
+function Pagination({ currentPage, totalPages, handlePageChange }) {
   return (
     <div className="pagination">
       <div className="pagination-main">
         <button
           className="page-content page-btn"
-          style={{ color: pageNum === 1 ? "gray" : "#a32cc4" }}
-          disabled={pageNum === 1}
+          style={{ color: currentPage === 1 ? "gray" : "#a32cc4" }}
+          disabled={currentPage === 1}
           onClick={() => handlePageChange(1)}
         >
           <MdOutlineKeyboardDoubleArrowLeft />
         </button>
         <button
           className="page-content page-btn"
-          style={{ color: pageNum === 1 ? "gray" : "#a32cc4" }}
-          disabled={pageNum === 1}
-          onClick={() => handlePageChange(pageNum - 1)}
+          style={{ color: currentPage === 1 ? "gray" : "#a32cc4" }}
+          disabled={currentPage === 1}
+          onClick={() => handlePageChange(currentPage - 1)}
         >
           <MdOutlineKeyboardArrowLeft />
         </button>
         <div className="page-content page-number">
-          <span>{pageNum}</span>
+          <span>{currentPage}</span>
         </div>
         <button
           className="page-content page-btn"
-          style={{ color: pageNum === 12 ? "gray" : "#a32cc4" }}
-          disabled={pageNum === 12}
-          onClick={() => handlePageChange(pageNum + 1)}
+          style={{ color: currentPage === totalPages ? "gray" : "#a32cc4" }}
+          disabled={currentPage === totalPages}
+          onClick={() => handlePageChange(currentPage + 1)}
         >
           <MdOutlineKeyboardArrowRight />
         </button>
         <button
           className="page-content page-btn"
-          style={{ color: pageNum === 12 ? "gray" : "#a32cc4" }}
-          disabled={pageNum === 12}
-          onClick={() => handlePageChange(12)}
+          style={{ color: currentPage === totalPages ? "gray" : "#a32cc4" }}
+          disabled={currentPage === totalPages}
+          onClick={() => handlePageChange(totalPages)}
         >
           <MdOutlineKeyboardDoubleArrowRight />
         </button>

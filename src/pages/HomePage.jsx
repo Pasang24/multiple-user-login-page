@@ -6,14 +6,17 @@ import sampleJobs from "../sampleData";
 
 function HomePage() {
   const [jobs, setJobs] = useState(sampleJobs);
-  const [pageNum, setPageNum] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const [showSkeleton, setShowSkeleton] = useState(true);
+
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/jobs?search_term`)
       .then((res) => {
         console.log(res.data);
         setJobs(res.data.data);
+        setTotalPages(Math.ceil(res.data.meta.total / 12));
       })
       .catch((err) => {
         console.log(err);
@@ -24,7 +27,12 @@ function HomePage() {
   }, []);
 
   const handlePageChange = (nextPageNum) => {
-    if (nextPageNum === pageNum || nextPageNum < 1 || nextPageNum > 12) return;
+    if (
+      nextPageNum === currentPage ||
+      nextPageNum < 1 ||
+      nextPageNum > totalPages
+    )
+      return;
     // setShowSkeleton(true);
     // axios
     //   .get(`${process.env.REACT_APP_SERVER_URL}/jobs?search_term`)
@@ -38,7 +46,7 @@ function HomePage() {
     //   .finally(() => {
     //     setShowSkeleton(false);
     //   });
-    setPageNum(nextPageNum);
+    setCurrentPage(nextPageNum);
   };
 
   const searchJobs = (searchTerm) => {
@@ -63,7 +71,8 @@ function HomePage() {
       <JobSection
         jobs={jobs}
         showSkeleton={showSkeleton}
-        pageNum={pageNum}
+        currentPage={currentPage}
+        totalPages={totalPages}
         handlePageChange={handlePageChange}
       />
     </div>
