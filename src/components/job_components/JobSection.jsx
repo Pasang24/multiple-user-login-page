@@ -4,6 +4,7 @@ import SkeletonContainer from "../loader_components/SkeletonContainer";
 import "./JobSection.css";
 
 function JobSection({
+  title,
   jobs,
   showSkeleton,
   currentPage,
@@ -12,7 +13,7 @@ function JobSection({
 }) {
   return (
     <div className="jobsection-container">
-      <h2 className="joblist-title">Available Jobs</h2>
+      <h2 className="joblist-title">{title}</h2>
       <div className="jobsection">
         {showSkeleton ? (
           <SkeletonContainer times={12} />

@@ -9,16 +9,19 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import AppliedJobs from "./pages/jobs/AppliedJobs";
 import UpsertJobs from "./pages/jobs/UpsertJobs";
 import ViewJob from "./pages/jobs/ViewJob";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   const [hasLoggedIn, setHasLoggedIn] = useState(
     JSON.parse(localStorage.getItem("hasLoggedIn")) || false
   );
+
   return (
     <>
       <NavBar hasLoggedIn={hasLoggedIn} setHasLoggedIn={setHasLoggedIn} />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path={`/search/:searchTerm`} element={<SearchPage />} />
         {!hasLoggedIn && (
           <>
             <Route

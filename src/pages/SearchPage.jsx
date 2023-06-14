@@ -3,10 +3,11 @@ import axios from "axios";
 import SearchBar from "../components/custom_components/SearchBar";
 import JobSection from "../components/job_components/JobSection";
 import sampleJobs from "../sampleData";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-function HomePage() {
+function SearchPage() {
   const navigate = useNavigate();
+  const { searchTerm } = useParams();
 
   const [jobs, setJobs] = useState(sampleJobs);
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,7 +16,7 @@ function HomePage() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/jobs?search_term`)
+      .get(`${process.env.REACT_APP_SERVER_URL}/jobs?search_term=${searchTerm}`)
       .then((res) => {
         console.log(res.data);
         setJobs(res.data.data);
@@ -27,7 +28,7 @@ function HomePage() {
       .finally(() => {
         setShowSkeleton(false);
       });
-  }, []);
+  }, [searchTerm]);
 
   const handlePageChange = (nextPageNum) => {
     if (
@@ -60,7 +61,7 @@ function HomePage() {
     <div>
       <SearchBar searchJobs={searchJobs} />
       <JobSection
-        title="Available Jobs"
+        title="Search Results"
         jobs={jobs}
         showSkeleton={showSkeleton}
         currentPage={currentPage}
@@ -71,4 +72,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default SearchPage;
