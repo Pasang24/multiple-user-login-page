@@ -6,23 +6,46 @@ import {
 } from "react-icons/md";
 import "./Pagination.css";
 
-function Pagination() {
+function Pagination({ pageNum, handlePageChange }) {
   return (
     <div className="pagination">
-      <ul>
-        <li>
+      <div className="pagination-main">
+        <button
+          className="page-content page-btn"
+          style={{ color: pageNum === 1 ? "gray" : "#a32cc4" }}
+          disabled={pageNum === 1}
+          onClick={() => handlePageChange(1)}
+        >
           <MdOutlineKeyboardDoubleArrowLeft />
-        </li>
-        <li>
+        </button>
+        <button
+          className="page-content page-btn"
+          style={{ color: pageNum === 1 ? "gray" : "#a32cc4" }}
+          disabled={pageNum === 1}
+          onClick={() => handlePageChange(pageNum - 1)}
+        >
           <MdOutlineKeyboardArrowLeft />
-        </li>
-        <li>
+        </button>
+        <div className="page-content page-number">
+          <span>{pageNum}</span>
+        </div>
+        <button
+          className="page-content page-btn"
+          style={{ color: pageNum === 12 ? "gray" : "#a32cc4" }}
+          disabled={pageNum === 12}
+          onClick={() => handlePageChange(pageNum + 1)}
+        >
           <MdOutlineKeyboardArrowRight />
-        </li>
-        <li>
+        </button>
+        <button
+          className="page-content page-btn"
+          style={{ color: pageNum === 12 ? "gray" : "#a32cc4" }}
+          disabled={pageNum === 12}
+          onClick={() => handlePageChange(12)}
+        >
           <MdOutlineKeyboardDoubleArrowRight />
-        </li>
-      </ul>
+        </button>
+      </div>
     </div>
   );
 }
