@@ -15,6 +15,7 @@ function SearchPage() {
   const [showSkeleton, setShowSkeleton] = useState(true);
 
   useEffect(() => {
+    setShowSkeleton(true);
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/jobs?search_term=${searchTerm}`)
       .then((res) => {

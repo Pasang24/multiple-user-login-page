@@ -1,5 +1,6 @@
 .jobsection-container {
   padding: 0 20px;
+  margin-bottom: 10px;
 }
 
 .joblist-title {
@@ -12,12 +13,13 @@
 }
 
 @media screen and (max-width: 1034px) {
-  .jobsection {
-    flex-direction: column;
-  }
-
   .jobsection-container {
     padding: 0;
+    margin-bottom: 0;
+  }
+
+  .jobsection {
+    flex-direction: column;
   }
 
   .joblist-title {

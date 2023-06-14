@@ -47,6 +47,7 @@ function LoginPage({ setHasLoggedIn }) {
       .then((res) => {
         //storing loginState and userToken in localStorage for persisting user login
         localStorage.setItem("hasLoggedIn", JSON.stringify(true));
+        localStorage.setItem("role", JSON.stringify(state.role));
         localStorage.setItem("userToken", JSON.stringify(res.data.token));
         console.log(res.data);
         setHasLoggedIn(true);

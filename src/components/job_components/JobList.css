@@ -1,6 +1,6 @@
 .jobs {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   width: 100%;
 }
@@ -8,10 +8,11 @@
 .jobs-container {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 @media screen and (max-width: 1034px) {
-  .jobs-container {
+  .jobs {
     /* justify-content: center; */
   }
 }
