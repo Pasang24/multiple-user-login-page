@@ -28,6 +28,7 @@ function App() {
             <Route path="/signup" element={<NewAccountPage />} />
 
             <Route path="jobs">
+
               <Route path=":id" element={<ViewJob />} />
 
               <Route element={<ProtectedRoute role="applicant" />}>
@@ -38,6 +39,7 @@ function App() {
                 <Route path="create" element={<UpsertJobs />} />
                 <Route path="edit/:id" element={<UpsertJobs />} />
               </Route>
+              
             </Route>
           </>
         )}
