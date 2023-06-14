@@ -9,11 +9,13 @@ function JobList({ jobs, currentPage, totalPages, handlePageChange }) {
   return (
     <div className="jobs">
       <div className="jobs-container">{renderedList}</div>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        handlePageChange={handlePageChange}
-      />
+      {jobs.length > 0 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          handlePageChange={handlePageChange}
+        />
+      )}
     </div>
   );
 }

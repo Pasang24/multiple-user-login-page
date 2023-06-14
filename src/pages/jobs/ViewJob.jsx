@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
+import JobDescription from "../../components/job_components/JobDescription";
 
 function ViewJob() {
-  const location = useLocation();
-  const jobId = location.pathname.split("/")[2]; //getting the job id from the url
-
+  const { id } = useParams(); //getting the job id from the url
+  console.log(id);
   const [job, setJob] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/jobs/${jobId}`)
+      .get(`${process.env.REACT_APP_SERVER_URL}/jobs/${id}`)
       .then((res) => {
-        console.log(res.data);
+        console.log(res);
         setJob(res.data);
       })
       .catch((err) => {
@@ -22,12 +22,12 @@ function ViewJob() {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [jobId]);
+  }, [id]);
 
   return (
     <div>
       <h1 style={{ color: "white", textAlign: "center" }}>
-        {isLoading ? "Loading..." : job.title}
+        {isLoading ? "Loading..." : <JobDescription job={job} />}
       </h1>
     </div>
   );
