@@ -1,0 +1,14 @@
+Applicant
+{
+    "email": "pasa@gmail.com",
+    "password": "password",
+    "role": "applicant",
+    "name": "Shlok Pandit",
+    "education":"KMSS",
+    "phoneNumber":"9800000000"
+}
+
+
+
+
+Recruiter
