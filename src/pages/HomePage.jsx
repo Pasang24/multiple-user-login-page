@@ -6,13 +6,17 @@ import sampleJobs from "../sampleData";
 
 function HomePage() {
   const [jobs, setJobs] = useState(sampleJobs);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const [showSkeleton, setShowSkeleton] = useState(true);
+
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/jobs?search_term")
+      .get(`${process.env.REACT_APP_SERVER_URL}/jobs?search_term`)
       .then((res) => {
         console.log(res.data);
         setJobs(res.data.data);
+        setTotalPages(Math.ceil(res.data.meta.total / 12));
       })
       .catch((err) => {
         console.log(err);
@@ -22,10 +26,33 @@ function HomePage() {
       });
   }, []);
 
+  const handlePageChange = (nextPageNum) => {
+    if (
+      nextPageNum === currentPage ||
+      nextPageNum < 1 ||
+      nextPageNum > totalPages
+    )
+      return;
+    // setShowSkeleton(true);
+    // axios
+    //   .get(`${process.env.REACT_APP_SERVER_URL}/jobs?search_term`)
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     setJobs(res.data.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   })
+    //   .finally(() => {
+    //     setShowSkeleton(false);
+    //   });
+    setCurrentPage(nextPageNum);
+  };
+
   const searchJobs = (searchTerm) => {
     setShowSkeleton(true);
     axios
-      .get(`http://localhost:8000/api/jobs/?vacancy=${searchTerm}`)
+      .get(`${process.env.REACT_APP_SERVER_URL}/jobs?search_term=${searchTerm}`)
       .then((res) => {
         console.log(res.data);
         setJobs(res.data.data);
@@ -41,7 +68,13 @@ function HomePage() {
   return (
     <div>
       <SearchBar searchJobs={searchJobs} />
-      <JobSection jobs={jobs} showSkeleton={showSkeleton} />
+      <JobSection
+        jobs={jobs}
+        showSkeleton={showSkeleton}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        handlePageChange={handlePageChange}
+      />
     </div>
   );
 }

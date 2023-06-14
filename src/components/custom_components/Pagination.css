@@ -3,33 +3,42 @@
   justify-content: center;
   margin: 10px auto 10px;
   width: 100%;
+  user-select: none;
 }
 
-.pagination ul {
+.pagination-main {
   display: flex;
   background: white;
   padding: 8px;
   border-radius: 50px;
 }
 
-.pagination ul li {
-  color: #a32cc4;
-  list-style: none;
+.page-content {
   line-height: 48px;
   text-align: center;
   font-size: 22px;
   font-weight: 500;
-  cursor: pointer;
+  border: none;
   border-radius: 50%;
   height: 45px;
   width: 45px;
   margin: 0 3px;
+}
+
+.page-btn {
+  background: white;
+  color: #a32cc4;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
+.page-number {
+  background: #a32cc4;
+  color: white;
+}
+
 @media (hover: hover) {
-  .pagination ul li:hover {
-    background: #a32cc4;
-    color: white;
+  .page-btn:hover {
+    background: rgb(216, 212, 212);
   }
 }

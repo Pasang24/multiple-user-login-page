@@ -1,4 +1,5 @@
 .job-container {
+  display: flex;
   background: white;
   margin: 6px;
   padding: 20px;
@@ -6,6 +7,27 @@
   width: calc(100% / 3.2);
   height: 200px;
   cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.job-container:hover {
+  background: rgb(246, 242, 242);
+}
+
+.company-image {
+  width: 25%;
+  margin-right: 5px;
+}
+
+.company-image img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.job-desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 @media screen and (max-width: 740px) {

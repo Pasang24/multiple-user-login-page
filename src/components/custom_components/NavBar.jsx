@@ -8,15 +8,7 @@ import "./NavBar.css";
 
 function NavBar({ hasLoggedIn, setHasLoggedIn }) {
   const navigate = useNavigate();
-
   const [showMenu, setShowMenu] = useState(false);
-
-  const handleLogout = () => {
-    setHasLoggedIn(false);
-    navigate("/");
-    localStorage.clear();
-    // code for logout
-  };
 
   return (
     <nav className="nav-bar">
@@ -31,14 +23,18 @@ function NavBar({ hasLoggedIn, setHasLoggedIn }) {
       )}
       {hasLoggedIn && (
         <div className="nav-buttons">
-          <Button onClick={handleLogout}>Log Out</Button>
           <div
             onClick={() => setShowMenu((prev) => !prev)}
             className="user-profile"
           >
             <FaUser size={26} color="purple" />
             <AnimatePresence>
-              {showMenu && <MenuBar setShowMenu={setShowMenu} />}
+              {showMenu && (
+                <MenuBar
+                  setShowMenu={setShowMenu}
+                  setHasLoggedIn={setHasLoggedIn}
+                />
+              )}
             </AnimatePresence>
           </div>
         </div>

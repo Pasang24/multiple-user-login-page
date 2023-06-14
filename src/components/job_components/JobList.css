@@ -12,7 +12,7 @@
 
 @media screen and (max-width: 1034px) {
   .jobs-container {
-    justify-content: center;
+    /* justify-content: center; */
   }
 }
 
