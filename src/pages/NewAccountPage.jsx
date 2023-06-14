@@ -1,5 +1,6 @@
 import { useState, useReducer } from "react";
 import { createPortal } from "react-dom";
+import { useNavigate } from "react-router-dom";
 import {
   AiOutlineUser,
   AiOutlineMail,
@@ -47,6 +48,7 @@ const reducer = (state, action) => {
 };
 
 function NewAccountPage() {
+  const navigate = useNavigate();
   const [showSpinner, setShowSpinner] = useState(false);
 
   const [state, dispatch] = useReducer(reducer, {
@@ -65,7 +67,8 @@ function NewAccountPage() {
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/signup`, state)
       .then((res) => {
-        console.log({ res });
+        console.log(res.data);
+        navigate("/login");
       })
       .catch((err) => {
         if (err.response.status === 400) {
