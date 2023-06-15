@@ -21,6 +21,33 @@ function App() {
     JSON.parse(localStorage.getItem("hasLoggedIn")) || false
   );
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+
+    let access_token = localStorage.getItem("userToken")
+
+    if (access_token) {
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/user`,
+      {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem("userToken"))}`
+        }
+      }
+    )
+      .then(res => {
+        dispatch(setUser(res.data.data))
+        console.log(res.data);
+
+      }
+      ).catch(err => {
+        console.log(err);
+      })
+    }
+    // eslint-disable-next-line
+  }, []);
+
+
   return (
     <>
       <NavBar hasLoggedIn={hasLoggedIn} setHasLoggedIn={setHasLoggedIn} />

@@ -21,7 +21,6 @@ function HomePage() {
         `${process.env.REACT_APP_SERVER_URL}/jobs?search_term&page=${currentPage}`
       )
       .then((res) => {
-        // console.log(res.data);
         setJobs(res.data.data);
         setTotalPages(Math.ceil(res.data.meta.total / 12));
       })
