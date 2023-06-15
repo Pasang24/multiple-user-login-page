@@ -3,8 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./MenuBar.css";
 
+import { useSelector, useDispatch } from 'react-redux';
+// import { logout } from '../../redux/Slice/UserSlice';
+
 function MenuBar({ setShowMenu, setHasLoggedIn }) {
   const navigate = useNavigate();
+
+  const { user } = useSelector((state) => state.user)
+  // const dispatch = useDispatch();
 
   useEffect(() => {
     const userProfile = document.querySelector(".user-profile");
@@ -25,6 +31,7 @@ function MenuBar({ setShowMenu, setHasLoggedIn }) {
     navigate("/");
     localStorage.clear();
     // code for logout
+    // dispatch(logout());
   };
 
   return (
@@ -37,12 +44,42 @@ function MenuBar({ setShowMenu, setHasLoggedIn }) {
       <div onClick={() => navigate("/profile")}>
         <span>My Profile</span>
       </div>
-      <div onClick={() => navigate("/myjobs")}>
+
+      {
+        user?.role === "recruiter"
+        &&
+        <>
+          {/* <li className="nav-item">
+                  <Link to="/jobs/create" className="nav-link active" aria-current="page" >create job</Link>
+                </li> */}
+          <div onClick={() => navigate("/jobs/create")}>
+            <span>My Profile</span>
+          </div>
+        </>
+      }
+
+      {
+        user?.role === "applicant"
+        &&
+        <>
+          {/* <li className="nav-item">
+            <Link to="/jobs/applied" className="nav-link active" aria-current="page" >Applied Jobs</Link>
+          </li> */}
+          <div onClick={() => navigate("/jobs/applied")}>
+            <span>My Profile</span>
+          </div>
+        </>
+      }
+
+
+      {/* <div onClick={() => navigate("/myjobs")}>
         <span>Jobs</span>
       </div>
       <div onClick={() => navigate("/appliedjobs")}>
         <span>Applied Jobs</span>
-      </div>
+      </div> */}
+
+
       <div onClick={handleLogout}>
         <span>Log Out</span>
       </div>

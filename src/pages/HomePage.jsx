@@ -17,7 +17,7 @@ function HomePage() {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/jobs?search_term`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setJobs(res.data.data);
         setTotalPages(Math.ceil(res.data.meta.total / 12));
       })
@@ -42,7 +42,7 @@ function HomePage() {
         `${process.env.REACT_APP_SERVER_URL}/jobs?search_term&page=${nextPageNum}`
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setJobs(res.data.data);
       })
       .catch((err) => {

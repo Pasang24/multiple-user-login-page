@@ -2,9 +2,6 @@ import { useNavigate } from "react-router-dom";
 import "./Job.css";
 
 function Job({ job }) {
-  console.log(job.images.length);
-  console.log(job.images);
-  console.log(job);
   const navigate = useNavigate();
   return (
     <div className="job-container" onClick={() => navigate(`/jobs/${job._id}`)}>
