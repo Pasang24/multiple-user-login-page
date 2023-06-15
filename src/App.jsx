@@ -22,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path={`/search/:searchTerm`} element={<SearchPage />} />
+        <Route path="/jobs/:id" element={<ViewJob />} />
         {!hasLoggedIn && (
           <>
             <Route
@@ -31,9 +32,6 @@ function App() {
             <Route path="/signup" element={<NewAccountPage />} />
 
             <Route path="jobs">
-
-              <Route path=":id" element={<ViewJob />} />
-
               <Route element={<ProtectedRoute role="applicant" />}>
                 <Route path="applied" element={<AppliedJobs />} />
               </Route>
@@ -42,7 +40,6 @@ function App() {
                 <Route path="create" element={<UpsertJobs />} />
                 <Route path="edit/:id" element={<UpsertJobs />} />
               </Route>
-              
             </Route>
           </>
         )}
