@@ -9,7 +9,7 @@ function SearchPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { searchTerm } = useParams();
-  const currentPage = location.search.split("=")[1] || 1;
+  const currentPage = parseInt(location.search.split("=")[1]) || 1;
 
   const [totalPages, setTotalPages] = useState(1);
   const [jobs, setJobs] = useState(sampleJobs);

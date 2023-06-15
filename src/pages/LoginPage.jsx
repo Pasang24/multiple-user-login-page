@@ -49,7 +49,6 @@ function LoginPage({ setHasLoggedIn }) {
         localStorage.setItem("hasLoggedIn", JSON.stringify(true));
         localStorage.setItem("role", JSON.stringify(state.role));
         localStorage.setItem("userToken", JSON.stringify(res.data.token));
-        console.log(res.data);
         setHasLoggedIn(true);
         navigate("/");
       })

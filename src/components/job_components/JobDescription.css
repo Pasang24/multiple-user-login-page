@@ -1,0 +1,33 @@
+.full-desc {
+}
+
+.full-desc h1 {
+  color: white;
+  text-align: left;
+  padding: 10px 16px;
+}
+
+.job-details {
+  background: white;
+  padding: 6px 16px;
+}
+
+.job-details h2 {
+  text-align: left;
+  color: purple;
+}
+
+.job-details ul {
+  margin-bottom: 20px;
+}
+
+.job-details ul li {
+  list-style: none;
+  font-size: 20px;
+  margin: 12px;
+}
+
+.company-site {
+  text-decoration: none;
+  color: purple;
+}

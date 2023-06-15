@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 function HomePage() {
   const navigate = useNavigate();
   const location = useLocation();
-  const currentPage = location.search.split("=")[1] || 1;
+  const currentPage = parseInt(location.search.split("=")[1]) || 1;
 
   const [totalPages, setTotalPages] = useState(1);
   const [jobs, setJobs] = useState(sampleJobs);
@@ -21,10 +21,8 @@ function HomePage() {
         `${process.env.REACT_APP_SERVER_URL}/jobs?search_term&page=${currentPage}`
       )
       .then((res) => {
-        console.log(res.data);
         setJobs(res.data.data);
         setTotalPages(Math.ceil(res.data.meta.total / 12));
-        console.log(totalPages);
       })
       .catch((err) => {
         console.log(err);
