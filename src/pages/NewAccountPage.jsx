@@ -67,7 +67,6 @@ function NewAccountPage() {
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/signup`, state)
       .then((res) => {
-        console.log(res.data);
         navigate("/login");
       })
       .catch((err) => {

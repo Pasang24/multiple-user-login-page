@@ -20,71 +20,14 @@ function App() {
   const [hasLoggedIn, setHasLoggedIn] = useState(
     JSON.parse(localStorage.getItem("hasLoggedIn")) || false
   );
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-
-    // let access_token = localStorage.getItem("userToken");
-    // console.log(access_token);
-    //   console.log("here1");
-    //   axios.get(`${process.env.REACT_APP_SERVER_URL}/user`, {
-    //     headers: {
-    //       Authorization: `Bearer ${localStorage.getItem("userToken")}`
-    //     }
-    //   }).then((user_res) => {
-    //     console.log("here");
-    //     console.log({ user_res });
-        // dispatch(setUser(user_res.data.data))
-    //   }
-
-
-    let access_token = localStorage.getItem("userToken")
-    console.log(JSON.parse(access_token));
-    if (access_token) {
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/user`,
-      {
-        headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem("userToken"))}`
-        }
-      }
-    )
-      .then(res => {
-        dispatch(setUser(res.data.data))
-        console.log(res.data);
-
-      }
-      ).catch(err => {
-        console.log(err);
-      })
-    }
-
-  }, []);
-
-  // useEffect(() => {
-  //   axios.get(`${process.env.REACT_APP_SERVER_URL}/applyjob`,
-  //     {
-  //       headers: {
-  //         Authorization: `Bearer ${localStorage.getItem("token")}`
-  //       }
-  //     }
-  //   )
-  //     .then(res => {
-
-  //       setJobs(res.data)
-
-  //     }).catch(err => {
-  //       console.log(err);
-  //     })
-  //   console.log(applied_jobs);
-  //   console.log(applied_jobs.length);
-  // }, [])
 
   return (
     <>
       <NavBar hasLoggedIn={hasLoggedIn} setHasLoggedIn={setHasLoggedIn} />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path={`/search/:searchTerm`} element={<SearchPage />} />
+        <Route path="/search/:searchTerm" element={<SearchPage />} />
+        <Route path="/jobs/:id" element={<ViewJob />} />
         {!hasLoggedIn && (
           <>
             <Route
@@ -94,9 +37,6 @@ function App() {
             <Route path="/signup" element={<NewAccountPage />} />
 
             <Route path="jobs">
-
-              <Route path=":id" element={<ViewJob />} />
-
               <Route element={<ProtectedRoute role="applicant" />}>
                 <Route path="applied" element={<AppliedJobs />} />
               </Route>

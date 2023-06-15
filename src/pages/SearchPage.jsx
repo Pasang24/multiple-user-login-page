@@ -3,16 +3,17 @@ import axios from "axios";
 import SearchBar from "../components/custom_components/SearchBar";
 import JobSection from "../components/job_components/JobSection";
 import sampleJobs from "../sampleData";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 function SearchPage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { searchTerm } = useParams();
+  const currentPage = parseInt(location.search.split("=")[1]) || 1;
 
-  const [jobs, setJobs] = useState(sampleJobs);
-  const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [showSkeleton, setShowSkeleton] = useState(true);
+  const [jobs, setJobs] = useState(sampleJobs);
+  const [showSkeleton, setShowSkeleton] = useState(false);
 
   useEffect(() => {
     setShowSkeleton(true);
@@ -31,7 +32,7 @@ function SearchPage() {
       .finally(() => {
         setShowSkeleton(false);
       });
-  }, [searchTerm, currentPage]);
+  }, [currentPage, searchTerm, location.search]);
 
   const handlePageChange = (nextPageNum) => {
     if (
@@ -40,22 +41,7 @@ function SearchPage() {
       nextPageNum > totalPages
     )
       return;
-    setShowSkeleton(true);
-    axios
-      .get(
-        `${process.env.REACT_APP_SERVER_URL}/jobs?search_term=${searchTerm}&page=${nextPageNum}`
-      )
-      .then((res) => {
-        console.log(res.data);
-        setJobs(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        setShowSkeleton(false);
-      });
-    setCurrentPage(nextPageNum);
+    navigate(`search/${searchTerm}/?page=${nextPageNum}`);
   };
 
   const searchJobs = (searchTerm) => {

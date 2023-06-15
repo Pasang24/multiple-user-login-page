@@ -3,19 +3,23 @@ import axios from "axios";
 import SearchBar from "../components/custom_components/SearchBar";
 import JobSection from "../components/job_components/JobSection";
 import sampleJobs from "../sampleData";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function HomePage() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const currentPage = parseInt(location.search.split("=")[1]) || 1;
 
-  const [jobs, setJobs] = useState(sampleJobs);
-  const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [showSkeleton, setShowSkeleton] = useState(true);
+  const [jobs, setJobs] = useState(sampleJobs);
+  const [showSkeleton, setShowSkeleton] = useState(false);
 
   useEffect(() => {
+    setShowSkeleton(true);
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/jobs?search_term`)
+      .get(
+        `${process.env.REACT_APP_SERVER_URL}/jobs?search_term&page=${currentPage}`
+      )
       .then((res) => {
         // console.log(res.data);
         setJobs(res.data.data);
@@ -27,7 +31,8 @@ function HomePage() {
       .finally(() => {
         setShowSkeleton(false);
       });
-  }, []);
+    // eslint-disable-next-line
+  }, [currentPage, location.search]);
 
   const handlePageChange = (nextPageNum) => {
     if (
@@ -36,22 +41,7 @@ function HomePage() {
       nextPageNum > totalPages
     )
       return;
-    setShowSkeleton(true);
-    axios
-      .get(
-        `${process.env.REACT_APP_SERVER_URL}/jobs?search_term&page=${nextPageNum}`
-      )
-      .then((res) => {
-        // console.log(res.data);
-        setJobs(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        setShowSkeleton(false);
-      });
-    setCurrentPage(nextPageNum);
+    navigate(`/?page=${nextPageNum}`);
   };
 
   const searchJobs = (searchTerm) => {

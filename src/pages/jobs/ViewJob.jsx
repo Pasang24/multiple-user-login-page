@@ -5,7 +5,6 @@ import JobDescription from "../../components/job_components/JobDescription";
 
 function ViewJob() {
   const { id } = useParams(); //getting the job id from the url
-  console.log(id);
   const [job, setJob] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -13,7 +12,6 @@ function ViewJob() {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/jobs/${id}`)
       .then((res) => {
-        console.log(res);
         setJob(res.data);
       })
       .catch((err) => {
@@ -25,11 +23,13 @@ function ViewJob() {
   }, [id]);
 
   return (
-    <div>
-      <h1 style={{ color: "white", textAlign: "center" }}>
-        {isLoading ? "Loading..." : <JobDescription job={job} />}
-      </h1>
-    </div>
+    <>
+      {isLoading ? (
+        <h1 style={{ textAlign: "center", color: "white" }}>Loading...</h1>
+      ) : (
+        <JobDescription job={job} />
+      )}
+    </>
   );
 }
 
