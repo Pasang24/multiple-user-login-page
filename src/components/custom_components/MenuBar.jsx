@@ -49,11 +49,8 @@ function MenuBar({ setShowMenu, setHasLoggedIn }) {
         user?.role === "recruiter"
         &&
         <>
-          {/* <li className="nav-item">
-                  <Link to="/jobs/create" className="nav-link active" aria-current="page" >create job</Link>
-                </li> */}
           <div onClick={() => navigate("/jobs/create")}>
-            <span>My Profile</span>
+            <span>Create Jobs</span>
           </div>
         </>
       }
@@ -62,23 +59,11 @@ function MenuBar({ setShowMenu, setHasLoggedIn }) {
         user?.role === "applicant"
         &&
         <>
-          {/* <li className="nav-item">
-            <Link to="/jobs/applied" className="nav-link active" aria-current="page" >Applied Jobs</Link>
-          </li> */}
           <div onClick={() => navigate("/jobs/applied")}>
-            <span>My Profile</span>
+            <span>Apply Jobs</span>
           </div>
         </>
       }
-
-
-      {/* <div onClick={() => navigate("/myjobs")}>
-        <span>Jobs</span>
-      </div>
-      <div onClick={() => navigate("/appliedjobs")}>
-        <span>Applied Jobs</span>
-      </div> */}
-
 
       <div onClick={handleLogout}>
         <span>Log Out</span>

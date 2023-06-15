@@ -23,10 +23,9 @@ function App() {
 
   const dispatch = useDispatch();
 
+  let access_token = localStorage.getItem("userToken");
+
   useEffect(() => {
-
-    let access_token = localStorage.getItem("userToken")
-
     if (access_token) {
     axios.get(`${process.env.REACT_APP_SERVER_URL}/user`,
       {
@@ -45,7 +44,7 @@ function App() {
       })
     }
     // eslint-disable-next-line
-  }, []);
+  }, [access_token]);
 
 
   return (
