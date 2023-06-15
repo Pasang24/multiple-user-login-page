@@ -21,7 +21,7 @@ function App() {
       <NavBar hasLoggedIn={hasLoggedIn} setHasLoggedIn={setHasLoggedIn} />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path={`/search/:searchTerm`} element={<SearchPage />} />
+        <Route path="/search/:searchTerm" element={<SearchPage />} />
         <Route path="/jobs/:id" element={<ViewJob />} />
         {!hasLoggedIn && (
           <>
