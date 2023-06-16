@@ -1,16 +1,12 @@
 import { useEffect } from "react";
 import "./Spinner.css";
 
-function Spinner() {
-  useEffect(() => {
-    document.body.classList.add("prevent-scroll");
-
-    return () => document.body.classList.remove("prevent-scroll");
-  }, []);
+function Spinner({ size }) {
   return (
-    <div className="spinner-container">
-      <div className="spinner"></div>;
-    </div>
+    <div
+      className="spinner"
+      style={{ width: size || 60, height: size || 60 }}
+    ></div>
   );
 }
 

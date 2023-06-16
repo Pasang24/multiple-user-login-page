@@ -1,15 +1,17 @@
-.full-desc {
+.jobModal-div {
+  position: relative;
 }
 
-.full-desc h1 {
+.full-desc h2 {
   color: white;
   text-align: left;
   padding: 10px 16px;
+  margin: 0;
 }
 
 .job-details {
   background: white;
-  padding: 6px 16px;
+  padding: 6px 16px 18px;
 }
 
 .job-details h2 {
@@ -19,6 +21,7 @@
 
 .job-details ul {
   margin-bottom: 20px;
+  padding-left: 4px;
 }
 
 .job-details ul li {

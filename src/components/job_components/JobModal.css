@@ -1,0 +1,39 @@
+.job-modal-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.job-modal {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 1px 1px 10px black;
+}
+
+.close-modal {
+  text-align: right;
+}
+
+.close-modal button {
+  background: white;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-icon {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-msg {
+  text-align: center;
+}
+
+.no-scroll {
+  overflow: hidden;
+}

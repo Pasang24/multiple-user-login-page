@@ -7,7 +7,7 @@ import UserSelectSection from "../components/form_components/UserSelectSection";
 import Input from "../components/custom_components/Input";
 import PasswordInput from "../components/form_components/PasswordInput";
 import LinkSection from "../components/form_components/LinkSection";
-import Spinner from "../components/loader_components/Spinner";
+import SpinnerContainer from "../components/loader_components/SpinnerContainer";
 import axios from "axios";
 
 //defining action types for reducer function
@@ -96,7 +96,10 @@ function LoginPage({ setHasLoggedIn }) {
         />
       </Form>
       {showSpinner &&
-        createPortal(<Spinner />, document.getElementById("spinner-div"))}
+        createPortal(
+          <SpinnerContainer />,
+          document.getElementById("spinner-div")
+        )}
     </>
   );
 }

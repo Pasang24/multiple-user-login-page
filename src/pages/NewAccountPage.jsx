@@ -15,7 +15,7 @@ import PasswordInput from "../components/form_components/PasswordInput";
 import UserSelectSection from "../components/form_components/UserSelectSection";
 import LinkSection from "../components/form_components/LinkSection";
 import axios from "axios";
-import Spinner from "../components/loader_components/Spinner";
+import SpinnerContainer from "../components/loader_components/SpinnerContainer";
 
 //defining action types for reducer function
 const UPDATE_USER = "updateUser";
@@ -153,7 +153,10 @@ function NewAccountPage() {
         />
       </Form>
       {showSpinner &&
-        createPortal(<Spinner />, document.getElementById("spinner-div"))}
+        createPortal(
+          <SpinnerContainer />,
+          document.getElementById("spinner-div")
+        )}
     </>
   );
 }
