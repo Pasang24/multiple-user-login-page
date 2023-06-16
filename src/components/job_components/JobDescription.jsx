@@ -13,7 +13,6 @@ function JobDescription({ job }) {
 
   const handleClick = () => {
     const currentRole = JSON.parse(localStorage.getItem("role")) || "";
-    const userToken = JSON.parse(localStorage.getItem("userToken")) || "";
     if (currentRole !== "applicant") {
       setShowJobModal(true);
       setRole(currentRole);
@@ -23,14 +22,27 @@ function JobDescription({ job }) {
       setRole(currentRole);
       setStatus("pending");
       axios
-        .post(`${process.env.REACT_APP_SERVER_URL}/applyjob`) //api request not complete for now
-        .then(() => {
+        .post(
+          `${process.env.REACT_APP_SERVER_URL}/applyjob`,
+          {
+            jobs: { job_id: job._id },
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${JSON.parse(
+                localStorage.getItem("userToken")
+              )}`,
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data);
           setStatus("applied");
         })
-        .catch(() => {
+        .catch((err) => {
+          console.log(err);
           setStatus("failed");
-        })
-        .finally(() => {});
+        });
     }
   };
 

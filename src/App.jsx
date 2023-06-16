@@ -6,7 +6,7 @@ import NewAccountPage from "./pages/NewAccountPage";
 import NavBar from "./components/custom_components/NavBar";
 
 import axios from "axios";
-import { setUser } from './redux/Slice/UserSlice';
+import { setUser } from "./redux/Slice/UserSlice";
 import { useDispatch } from "react-redux";
 
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -16,7 +16,6 @@ import ViewJob from "./pages/jobs/ViewJob";
 import SearchPage from "./pages/SearchPage";
 
 function App() {
-
   const [hasLoggedIn, setHasLoggedIn] = useState(
     JSON.parse(localStorage.getItem("hasLoggedIn")) || false
   );
@@ -27,25 +26,24 @@ function App() {
 
   useEffect(() => {
     if (access_token) {
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/user`,
-      {
-        headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem("userToken"))}`
-        }
-      }
-    )
-      .then(res => {
-        dispatch(setUser(res.data.data))
-        console.log(res.data);
-
-      }
-      ).catch(err => {
-        console.log(err);
-      })
+      axios
+        .get(`${process.env.REACT_APP_SERVER_URL}/user`, {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("userToken")
+            )}`,
+          },
+        })
+        .then((res) => {
+          dispatch(setUser(res.data.data));
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
     // eslint-disable-next-line
   }, [access_token]);
-
 
   return (
     <>
@@ -71,7 +69,6 @@ function App() {
                 <Route path="create" element={<UpsertJobs />} />
                 <Route path="edit/:id" element={<UpsertJobs />} />
               </Route>
-
             </Route>
           </>
         )}
