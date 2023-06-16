@@ -3,8 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./MenuBar.css";
 
+import { useSelector, useDispatch } from 'react-redux';
+// import { logout } from '../../redux/Slice/UserSlice';
+
 function MenuBar({ setShowMenu, setHasLoggedIn }) {
   const navigate = useNavigate();
+
+  const { user } = useSelector((state) => state.user)
+  // const dispatch = useDispatch();
 
   useEffect(() => {
     const userProfile = document.querySelector(".user-profile");
@@ -25,6 +31,7 @@ function MenuBar({ setShowMenu, setHasLoggedIn }) {
     navigate("/");
     localStorage.clear();
     // code for logout
+    // dispatch(logout());
   };
 
   return (
@@ -37,12 +44,27 @@ function MenuBar({ setShowMenu, setHasLoggedIn }) {
       <div onClick={() => navigate("/profile")}>
         <span>My Profile</span>
       </div>
-      <div onClick={() => navigate("/myjobs")}>
-        <span>Jobs</span>
-      </div>
-      <div onClick={() => navigate("/appliedjobs")}>
-        <span>Applied Jobs</span>
-      </div>
+
+      {
+        user?.role === "recruiter"
+        &&
+        <>
+          <div onClick={() => navigate("/jobs/create")}>
+            <span>Create Jobs</span>
+          </div>
+        </>
+      }
+
+      {
+        user?.role === "applicant"
+        &&
+        <>
+          <div onClick={() => navigate("/jobs/applied")}>
+            <span>Apply Jobs</span>
+          </div>
+        </>
+      }
+
       <div onClick={handleLogout}>
         <span>Log Out</span>
       </div>
