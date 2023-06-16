@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import "./Spinner.css";
 
 function Spinner({ size }) {

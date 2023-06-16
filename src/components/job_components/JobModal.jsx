@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   AiOutlineExclamationCircle,
@@ -8,6 +9,12 @@ import Spinner from "../loader_components/Spinner";
 import "./JobModal.css";
 
 function JobModal({ role, status, onClose }) {
+  useEffect(() => {
+    document.body.classList.add("no-scroll");
+
+    return () => document.body.classList.remove("no-scroll");
+  }, []);
+
   let modalIcon = <AiOutlineExclamationCircle size={80} color="red" />;
   let modalMsg = "Please login as Applicant to apply for job";
 
