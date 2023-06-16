@@ -9,7 +9,7 @@ function ViewJob() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    document.body.scrollTop = 0;
+    window.scrollTo(0, 0);
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/jobs/${id}`)
       .then((res) => {
