@@ -36,7 +36,6 @@ function App() {
         })
         .then((res) => {
           dispatch(setUser(res.data.data));
-          console.log(res.data);
         })
         .catch((err) => {
           console.log(err);
@@ -48,32 +47,46 @@ function App() {
   return (
     <>
       <NavBar hasLoggedIn={hasLoggedIn} setHasLoggedIn={setHasLoggedIn} />
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/search/:searchTerm" element={<SearchPage />} />
         <Route path="/jobs/:id" element={<ViewJob />} />
-        {!hasLoggedIn && (
-          <>
+        <>
+
+          {!hasLoggedIn && (
             <Route
               path="/login"
               element={<LoginPage setHasLoggedIn={setHasLoggedIn} />}
             />
-            <Route path="/signup" element={<NewAccountPage />} />
+          )}
 
-            <Route path="jobs">
-              <Route element={<ProtectedRoute role="applicant" />}>
-                <Route path="applied" element={<AppliedJobs />} />
-              </Route>
+          <Route path="/signup" element={<NewAccountPage />} />
 
-              <Route element={<ProtectedRoute role="recruiter" />}>
-                <Route path="create" element={<UpsertJobs />} />
-                <Route path="edit/:id" element={<UpsertJobs />} />
-              </Route>
+          <Route element={<ProtectedRoute role="applicant" />}>
+            <Route path='/applied' element={<AppliedJobs />} />
+          </Route>
+
+          <Route element={<ProtectedRoute role="recruiter" />}>
+            <Route path="/create" element={<UpsertJobs />} />
+            <Route path="/edit/:id" element={<UpsertJobs />} />
+          </Route>
+
+          {/* <Route path="jobs">
+            <Route element={<ProtectedRoute role="applicant" />}>
+              <Route path='/applied' element={<AppliedJobs />} />
             </Route>
-          </>
-        )}
+          </Route> */}
+
+        </>
+
         <Route path="*" element={<h1>404 Page Not Found</h1>} />
       </Routes>
+
+
+
+
+
     </>
   );
 }
