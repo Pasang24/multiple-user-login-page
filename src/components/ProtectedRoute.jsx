@@ -1,18 +1,19 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { Navigate, Outlet } from 'react-router-dom';
-import Forbidden from './Forbidden';
+import React from "react";
+import { useSelector } from "react-redux";
+import { Navigate, Outlet } from "react-router-dom";
+import Forbidden from "./Forbidden";
 
 const ProtectedRoute = (props) => {
-    const { user } = useSelector((state) => state.user);
+  // const { user } = useSelector((state) => state.user);
+  const role = JSON.parse(localStorage.getItem("role"));
 
-    if (user) {
-        if (user.role == props.role) {
-            return <Outlet />
-        }
-        return <Forbidden />
+  if (role) {
+    if (role == props.role) {
+      return <Outlet />;
     }
-    return <Navigate to="login" />
-}
+    return <Forbidden />;
+  }
+  return <Navigate to="login" />;
+};
 
 export default ProtectedRoute;

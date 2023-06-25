@@ -53,7 +53,6 @@ function App() {
         <Route path="/search/:searchTerm" element={<SearchPage />} />
         <Route path="/jobs/:id" element={<ViewJob />} />
         <>
-
           {!hasLoggedIn && (
             <Route
               path="/login"
@@ -64,7 +63,7 @@ function App() {
           <Route path="/signup" element={<NewAccountPage />} />
 
           <Route element={<ProtectedRoute role="applicant" />}>
-            <Route path='/applied' element={<AppliedJobs />} />
+            <Route path="/applied" element={<AppliedJobs />} />
           </Route>
 
           <Route element={<ProtectedRoute role="recruiter" />}>
@@ -77,16 +76,10 @@ function App() {
               <Route path='/applied' element={<AppliedJobs />} />
             </Route>
           </Route> */}
-
         </>
 
         <Route path="*" element={<h1>404 Page Not Found</h1>} />
       </Routes>
-
-
-
-
-
     </>
   );
 }

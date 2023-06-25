@@ -1,0 +1,58 @@
+.job-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.job-form form {
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  max-width: 1000px;
+  width: 90%;
+  color: white;
+  font-size: 20px;
+}
+
+.upload-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.job-form input,
+.form-group textarea {
+  background: rgb(250, 249, 246);
+  max-width: 1000px;
+  width: 90%;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  box-shadow: 1px 1px 12px black;
+  outline: none;
+  font-size: 18px;
+  transition: 0.2s;
+}
+
+.job-form-btn {
+  background: white;
+  color: #a32cc4;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 12px black;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 20px 0;
+}
