@@ -3,12 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./MenuBar.css";
 
-import { useSelector } from 'react-redux';
-
 function MenuBar({ setShowMenu, setHasLoggedIn }) {
   const navigate = useNavigate();
 
-  const { user } = useSelector((state) => state.user)
+  const role = JSON.parse(localStorage.getItem("role"));
 
   useEffect(() => {
     const userProfile = document.querySelector(".user-profile");
@@ -33,7 +31,7 @@ function MenuBar({ setShowMenu, setHasLoggedIn }) {
   };
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ scale: 0, transformOrigin: "top right" }}
       animate={{ scale: 1 }}
       exit={{ scale: 0 }}
@@ -43,25 +41,21 @@ function MenuBar({ setShowMenu, setHasLoggedIn }) {
         <span>My Profile</span>
       </div>
 
-      {
-        user?.role === "recruiter"
-        &&
+      {role === "recruiter" && (
         <>
           <div onClick={() => navigate("/create")}>
             <span>Create Jobs</span>
           </div>
         </>
-      }
- 
-      {
-        user?.role === "applicant"
-        &&
+      )}
+
+      {role === "applicant" && (
         <>
           <div onClick={() => navigate("/applied")}>
             <span>Applied Jobs</span>
           </div>
         </>
-      }
+      )}
 
       <div onClick={handleLogout}>
         <span>Log Out</span>
