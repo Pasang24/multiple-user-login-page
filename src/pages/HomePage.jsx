@@ -22,7 +22,7 @@ function HomePage() {
       )
       .then((res) => {
         setJobs(res.data.data);
-        setTotalPages(Math.ceil(res.data.meta.total / 12));
+        setTotalPages(Math.ceil(res.data.meta.total / 9));
       })
       .catch((err) => {
         console.log(err);
